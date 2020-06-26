@@ -10,7 +10,7 @@ public class Problem026 implements ProjectEulerRunner {
 
 	@Override
 	public String run() {
-		return "";
+		return "Changes to be made :)";
 	}
 
 }
