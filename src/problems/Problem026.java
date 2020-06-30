@@ -2,8 +2,8 @@ package problems;
 
 import runner.ProjectEulerRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Problem026 implements ProjectEulerRunner {
 
@@ -13,36 +13,38 @@ public class Problem026 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        List<Integer> result = fractionToDecimalList(1, 4, new ArrayList<>());
-        return "";
+        int longest = 0, next = 0, result = 0;
+        for (int i = 2; i < 1000; i++)  {
+            next = getLongestCycle(i);
+            if (next > longest)  {
+                longest = next;
+                result = i;
+            }
+        }
+        return Integer.toString(result);
     }
 
     /*
-        Idea: Find the remainder of the division, multiply by 10 to shift digits and divide by the denominator again.
-        Repeat until remainder is 0, or if previous remainders repeat.
+        Get the longest cycle in the unit fraction 1/denom
 
-        denominator DOES NOT CHANGE. Numerator becomes the previous iterations remainder
+        Idea: If we see the same remainder in our calculation then we know a cycle must exist
      */
-    private List<Integer> fractionToDecimalList(int num, int denom, List<Integer> result) {
-        // Calculate the remainder
-        int rem = (10 * (num % denom)) / denom;
-
-        // If remainder is 0 then there will be no future decimal parts
-        if (rem == 0) {
-            return result;
-        }
-
-        // If the calculated remainder equals a previously added remainder then we should stop
-        if (!result.isEmpty()) {
-            if (result.get(result.size() - 1) == rem) {
-                return result;
+    private int getLongestCycle(int denominator) {
+        // Map to store <iteration, remainder>
+        Map<Integer, Integer> results = new HashMap<>();
+        // First remainder
+        int remainder = 1;
+        int iteration = 0;
+        while (!results.containsValue(remainder))  {
+            results.put(iteration, remainder);
+            // Find the remainder in the next decimal place
+            remainder = (10 * remainder) % denominator;
+            if (remainder == 0)  {
+                iteration = 0;
+                break;
             }
+            iteration++;
         }
-
-        // Add the calculated remainder to the existing result list
-        result.add(rem);
-
-        // The new numerator will be the remainder of the last division multiplied by 10.
-        return fractionToDecimalList(rem, denom, result);
+        return iteration;
     }
 }
