@@ -12,19 +12,23 @@ public class Problem014 implements ProjectEulerRunner {
 
     @Override
     public String run() {
+        int result = longestCollatzChain(1000000);
+        return Integer.toString(result);
+    }
+
+    private int longestCollatzChain(int limit)  {
         LinkedList<Long> list = new LinkedList<Long>();
         long length = 0;
         int result = 0;
-        for (int j = 10; j < 1000000; j++) {
+        for (int j = 10; j < limit; j++) {
             long i = j;
             while (i != 1) {
                 if (i % 2 == 0) {
                     i /= 2;
-                    list.add(i);
                 } else {
                     i = (3 * i) + 1;
-                    list.add(i);
                 }
+                list.add(i);
             }
             if (list.size() > length) {
                 length = list.size();
@@ -32,6 +36,6 @@ public class Problem014 implements ProjectEulerRunner {
             }
             list.clear();
         }
-        return String.valueOf(result);
+        return result;
     }
 }

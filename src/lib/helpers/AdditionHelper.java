@@ -129,28 +129,14 @@ public class AdditionHelper {
         return (resultSignNegative) ? "-" + result : result;
     }
 
-    public String getFirst() {
-        return first;
-    }
-
     public void setFirst(String first) {
         this.first = first;
-    }
-
-    public String getSecond() {
-        return second;
     }
 
     public void setSecond(String second) {
         this.second = second;
     }
 
-    /**
-     * @param larger  - larger value
-     * @param smaller - smaller value
-     * @return pads zeros in front of the smaller value so it is the same size as
-     * the larger
-     */
     private String padSmallerValue(String larger, String smaller) {
         StringBuilder zeros = new StringBuilder();
         for (int i = smaller.length(); i < larger.length(); i++) {

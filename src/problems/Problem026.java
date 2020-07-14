@@ -13,33 +13,34 @@ public class Problem026 implements ProjectEulerRunner {
 
     @Override
     public String run() {
+        int result = reciprocalCycles(1000);
+        return Integer.toString(result);
+    }
+
+    private int reciprocalCycles(int limit) {
         int longest = 0, next = 0, result = 0;
-        for (int i = 2; i < 1000; i++)  {
+        for (int i = 2; i < 1000; i++) {
             next = getLongestCycle(i);
-            if (next > longest)  {
+            if (next > longest) {
                 longest = next;
                 result = i;
             }
         }
-        return Integer.toString(result);
+        return result;
     }
 
     /*
-        Get the longest cycle in the unit fraction 1/denom
-
-        Idea: If we see the same remainder in our calculation then we know a cycle must exist
+        Thoughts:
+            If we see the same remainder in our calculation then we know a cycle must exist
      */
     private int getLongestCycle(int denominator) {
-        // Map to store <iteration, remainder>
         Map<Integer, Integer> results = new HashMap<>();
-        // First remainder
         int remainder = 1;
         int iteration = 0;
-        while (!results.containsValue(remainder))  {
+        while (!results.containsValue(remainder)) {
             results.put(iteration, remainder);
-            // Find the remainder in the next decimal place
             remainder = (10 * remainder) % denominator;
-            if (remainder == 0)  {
+            if (remainder == 0) {
                 iteration = 0;
                 break;
             }

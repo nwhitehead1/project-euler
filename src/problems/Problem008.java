@@ -14,22 +14,23 @@ public class Problem008 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        return length13Substrings(NUMBER, 13).toString();
+        BigInteger result = length13Substrings(NUMBER, 13);
+        return result.toString();
     }
 
     private BigInteger length13Substrings(String value, int adjacentDigits) {
         BigInteger maxValue = BigInteger.ONE;
         BigInteger tempValue = BigInteger.ONE;
-        char[] charArry = value.toCharArray();
+        char[] charArr = value.toCharArray();
         int index = 0;
-        while (index < charArry.length - adjacentDigits) {
+        while (index < charArr.length - adjacentDigits) {
             for (int j = index; j < index + adjacentDigits; j++) {
-                if (charArry[j] == '0') {
+                if (charArr[j] == '0') {
                     index = j;
                     tempValue = BigInteger.ZERO;
                     break;
                 } else {
-                    tempValue = tempValue.multiply(new BigInteger(String.valueOf(charArry[j])));
+                    tempValue = tempValue.multiply(new BigInteger(String.valueOf(charArr[j])));
                 }
             }
             if (tempValue.compareTo(maxValue) == 1) {

@@ -12,6 +12,11 @@ public class Problem004 implements ProjectEulerRunner {
 
     @Override
     public String run() {
+        int result = largestPalindromeThreeDigitProduct();
+        return Integer.toString(result);
+    }
+
+    private int largestPalindromeThreeDigitProduct() {
         int largestPalindromeMult = 0;
         for (int i = 100; i <= 999; i++) {
             for (int j = 100; j <= 999; j++) {
@@ -21,6 +26,6 @@ public class Problem004 implements ProjectEulerRunner {
                 }
             }
         }
-        return String.valueOf(largestPalindromeMult);
+        return largestPalindromeMult;
     }
 }

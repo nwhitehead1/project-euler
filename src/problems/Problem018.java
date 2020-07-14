@@ -19,6 +19,16 @@ public class Problem018 implements ProjectEulerRunner {
 
     @Override
     public String run() {
+        int result = maximumPathSum();
+        return Integer.toString(result);
+    }
+
+    /*
+        Thoughts:
+            Using a Node class, find the heaviest path by summing the weight at each node recursively
+            First build out the Node object by populating nodes
+     */
+    private int maximumPathSum()  {
         String[] treeArrayString = TREE.replace("\r\n", " ").split(" ");
         int[] treeArrayInteger = new int[treeArrayString.length];
         for (int i = 0; i < treeArrayString.length; i++) {
@@ -27,7 +37,7 @@ public class Problem018 implements ProjectEulerRunner {
         Node root = new Node(null);
         root = addRecursively(root, treeArrayInteger, 1, 0);
 
-        return String.valueOf(Library.getHeaviestPath(root));
+        return Library.getHeaviestPath(root);
     }
 
     private Node addRecursively(Node root, int[] values, int lengthOfLevel, int i) {

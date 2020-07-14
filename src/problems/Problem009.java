@@ -2,6 +2,8 @@ package problems;
 
 import runner.ProjectEulerRunner;
 
+import java.util.stream.IntStream;
+
 public class Problem009 implements ProjectEulerRunner {
 
     public static void main(String[] args) {
@@ -10,23 +12,17 @@ public class Problem009 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        return String.valueOf(findTriple());
+        int result = specialPythagoreanTriplet(1000);
+        return Integer.toString(result);
     }
 
-    private int findTriple() {
-        for (int i = 1; i < 333; i++) {
-            for (int j = i + 1; j < 666; j++) {
-                for (int k = j + 1; k < 1000; k++) {
-                    if (isPythagoreanTriple(i, j, k) && i + j + k == 1000) {
-                        return i * j * k;
-                    }
-                }
-            }
-        }
-        return 0;
-    }
+    private int specialPythagoreanTriplet(int n) {
+        return IntStream.rangeClosed(1, n).boxed()
+                .flatMapToInt(a -> IntStream.rangeClosed(a, n)
+                        .filter(b -> a + b + Math.sqrt(a * a + b * b) == n)
+                        .map(b -> a * b * (int) Math.sqrt(a * a + b * b)))
+                .findFirst()
+                .getAsInt();
 
-    private boolean isPythagoreanTriple(int a, int b, int c) {
-		return a * a + b * b == c * c;
     }
 }
