@@ -11,12 +11,16 @@ public class Problem006 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        return String.valueOf(squareOfSums(100) - Library.sumOfSquares(100));
+        int result = squareOfSum(100) - Library.sumOfSquares(100);
+        return Integer.toString(result);
     }
 
-    private long squareOfSums(int n) {
-        long sum = Library.increasingSum(n);
+    /*
+        Thoughts:
+            Use time-efficient sum calculation without looping
+     */
+    private int squareOfSum(int n) {
+        int sum = Library.increasingSum(n);
         return sum * sum;
     }
-
 }

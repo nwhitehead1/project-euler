@@ -1,6 +1,6 @@
 package problems;
 
-import lib.Library;
+import lib.helpers.AdditionHelper;
 import runner.ProjectEulerRunner;
 
 public class Problem016 implements ProjectEulerRunner {
@@ -11,36 +11,27 @@ public class Problem016 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        String result = calculate("2", 1000);
-        int sumTotal = 0;
-        for (char c : result.toCharArray()) {
-            sumTotal += Character.getNumericValue(c);
-        }
-        return String.valueOf(sumTotal);
+        int result = powerDigitSum("2", 1000, new AdditionHelper());
+        return Integer.toString(result);
     }
 
-    private String calculate(String sum, int iteration) {
-        StringBuilder sumBuilder = new StringBuilder();
-        String reverseSum = Library.reverseString(sum);
-        int integerSum, carry = 0;
+    /*
+        Thoughts:
+            Multiplication of 2*n is the same as adding 2, n times
+            2^1 = 2, first iteration
+            2^2 = 2*2 = 2+2, second iteration
+            2^3 = 2*(2*2) = (2+2)+(2+2), third iteration
+            ...
 
+            Add the previous result to itself (equivalent to multiplying by 2), decrement iteration
+
+     */
+    private int powerDigitSum(String sum, int iteration, AdditionHelper helper) {
         if (iteration < 2) {
-            return sum;
+            return sum.chars().map(Character::getNumericValue).sum();
         }
-
-        for (int i = 0; i < sum.length(); i++) {
-            integerSum = Character.getNumericValue(reverseSum.charAt(i));
-            int result = integerSum + integerSum + carry;
-            if (result > 9) {
-                carry = result / 10;
-            } else {
-                carry = 0;
-            }
-            sumBuilder.append(result % 10);
-        }
-
-        return calculate(
-                Library.reverseString(carry != 0 ? sumBuilder.append(carry).toString() : sumBuilder.toString()),
-                iteration - 1);
+        helper.setFirst(sum);
+        helper.setSecond(sum);
+        return powerDigitSum(helper.addTwoNumbers(), iteration - 1, helper);
     }
 }

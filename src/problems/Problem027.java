@@ -15,17 +15,18 @@ public class Problem027 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        return ""+longestConsecutivePrimeProduct();
+        int result = quadraticPrimes();
+        return Integer.toString(result);
     }
 
     /*
-        n^2 + an + b, |a|<1000, |b|<=1000
+        Thoughts:
+            n^2 + an + b, |a|<1000, |b|<=1000
+            n=0 => b. Therefore b must be prime
+            n=1 => 1 + a + b. Since all primes besides 2 are odd, a must be odd
      */
-    public int longestConsecutivePrimeProduct() {
-
+    private int quadraticPrimes() {
         int nMax = 0, aMax = 0, bMax = 0;
-        // n=0 => b. Therefore b must be prime
-        // n=1 => 1 + a + b. Since all primes besides 2 are odd, a must be odd
         List<Integer> bValues = IntStream.rangeClosed(0, 1000).boxed()
                 .filter(i -> Library.isPrime(i)).sorted().collect(Collectors.toList());
 

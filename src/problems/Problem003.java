@@ -13,12 +13,10 @@ public class Problem003 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        return String.valueOf(largestPrimeFactor(new BigInteger("600851475143")));
+        int result = largestPrimeFactor(new BigInteger("600851475143"));
+        return Integer.toString(result);
     }
 
-    /*
-    	Finds the largest prime factor of a given value
-     */
     private int largestPrimeFactor(BigInteger value) {
         int largestPrime = 2;
         int max = generateSqrt(value);
@@ -37,7 +35,8 @@ public class Problem003 implements ProjectEulerRunner {
     }
 
     /*
-		Prime factors cannot be larger than the sqrt() of the value tested (
+        Thoughts:
+		    Prime factors cannot be larger than the square root of the value tested
      */
     private int generateSqrt(BigInteger limit) {
         BigInteger index = BigInteger.ONE;

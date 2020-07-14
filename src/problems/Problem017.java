@@ -16,19 +16,20 @@ public class Problem017 implements ProjectEulerRunner {
 
     @Override
     public String run() {
+        int result = numberLetterCountsToOneThousand();
+        return Integer.toString(result);
+    }
+
+    private int numberLetterCountsToOneThousand() {
         int total = 0;
         String nextValue;
         for (int i = 1; i < 20; i++) {
-            System.out.println(ONES[i]);
             total += ONES[i].length();
         }
-
         for (int i = 20; i < 100; i++) {
             nextValue = TENS[i / 10 - 2] + ((i % 10 == 0) ? "" : ONES[i % 10]);
-            System.out.println(nextValue);
             total += nextValue.length();
         }
-
         for (int i = 1; i < 10; i++) {
             for (int j = 0; j < 100; j++) {
                 nextValue = ONES[i] + "hundred";
@@ -39,13 +40,10 @@ public class Problem017 implements ProjectEulerRunner {
                 } else {
                     nextValue += "and" + TENS[j / 10 - 2] + ((j % 10 == 0) ? "" : ONES[j % 10]);
                 }
-                System.out.println(nextValue);
                 total += nextValue.length();
             }
         }
-
         total += "onethousand".length();
-
-        return String.valueOf(total);
+        return total;
     }
 }

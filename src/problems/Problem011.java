@@ -37,7 +37,7 @@ public class Problem011 implements ProjectEulerRunner {
         int maxDiagLR = maxDiagLR(grid);
         int maxDiagRL = maxDiagRL(grid);
         int max = Math.max(maxRight, Math.max(maxDown, Math.max(maxDiagRL, maxDiagLR)));
-        return String.valueOf(max);
+        return Integer.toString(max);
     }
 
     private int[][] generateGrid() {

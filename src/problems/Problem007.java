@@ -11,10 +11,11 @@ public class Problem007 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        return String.valueOf(nthPrime(10001));
+        int result = nthPrime(10001);
+        return Integer.toString(result);
     }
 
-    private long nthPrime(int n) {
+    private int nthPrime(int n) {
         int primeCount = 1;
         int i = 3;
         while (primeCount < n) {

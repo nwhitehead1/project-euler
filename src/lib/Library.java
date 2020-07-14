@@ -3,7 +3,10 @@ package lib;
 import lib.models.Node;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public final class Library {
 
@@ -11,16 +14,16 @@ public final class Library {
      * @param n
      * @return sum from 1^2 to n^2
      */
-    public static long sumOfSquares(int n) {
-        return (long) (n * (n + 1) * (2 * n + 1)) / 6;
+    public static int sumOfSquares(int n) {
+        return (n * (n + 1) * (2 * n + 1)) / 6;
     }
 
     /**
      * @param n
      * @return sum from 1 to n
      */
-    public static long increasingSum(int n) {
-        return (long) (n * (n + 1)) / 2;
+    public static int increasingSum(int n) {
+        return (n * (n + 1)) / 2;
     }
 
     /**
@@ -28,13 +31,7 @@ public final class Library {
      * @return if true - prime, else not prime
      */
     public static boolean isPrime(int n) {
-        if ((n & 1) == 0) {
-            return false;
-        }
-        for (int i = 3; i * i <= n; i += 2)
-            if (n % i == 0 || n % (i + 2) == 0)
-                return false;
-        return true;
+        return (n > 1) && IntStream.rangeClosed(2, (int) Math.sqrt(n)).noneMatch(num -> n % num == 0);
     }
 
     /**
@@ -158,5 +155,4 @@ public final class Library {
             return n * factorial(n - 1);
         }
     }
-
 }

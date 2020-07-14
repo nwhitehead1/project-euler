@@ -12,11 +12,23 @@ public class Problem015 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        BigInteger result = simpleFactorial(40).divide((simpleFactorial(20).multiply(simpleFactorial(40 - 20))));
+        BigInteger result = latticePaths(20);
         return result.toString();
     }
 
-    private BigInteger simpleFactorial(int n) {
+    /*
+        Thoughts:
+            Number of lattice paths from (0,0) to (n,k) is (n+k)C(n), in this instance n=k=20
+            Therefore, (40)C(20) = 40! / (20! x (40-20)!)
+     */
+    private BigInteger latticePaths(int gridSize)  {
+        BigInteger numerator = factorial(2*gridSize);
+        BigInteger denominator = factorial(gridSize).multiply(factorial(gridSize));
+        BigInteger result = numerator.divide(denominator);
+        return result;
+    }
+
+    private BigInteger factorial(int n) {
         BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= n; i++)
             result = result.multiply(BigInteger.valueOf(i));
