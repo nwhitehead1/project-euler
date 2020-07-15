@@ -148,7 +148,7 @@ public final class Library {
      */
     public static int factorial(int n) {
         if (n < 2) {
-            return n;
+            return 1;
         } else {
             return n * factorial(n - 1);
         }
