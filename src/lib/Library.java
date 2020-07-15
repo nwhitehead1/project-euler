@@ -3,8 +3,6 @@ package lib;
 import lib.models.Node;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -154,5 +152,15 @@ public final class Library {
         } else {
             return n * factorial(n - 1);
         }
+    }
+
+    /**
+     * Euclidean method for finding the greatest common denominator
+     * @param a first value > b
+     * @param b second value
+     * @return greatest common denominator
+     */
+    public static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 }
