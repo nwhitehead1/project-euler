@@ -33,7 +33,7 @@ public final class Library {
     }
 
     /**
-     * @param n
+     * @param n integer
      * @return true if a palindrome, false otherwise
      */
     public static boolean palindrome(int n) {
