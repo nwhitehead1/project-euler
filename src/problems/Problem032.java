@@ -1,8 +1,7 @@
 package problems;
 
+import lib.Library;
 import runner.ProjectEulerRunner;
-
-import java.util.Arrays;
 
 public class Problem032 implements ProjectEulerRunner {
 
@@ -20,7 +19,6 @@ public class Problem032 implements ProjectEulerRunner {
         Thoughts:
             1) The multiplier, multiplicand, product lengths must equal 9
             2) multiplication is commutative - collect products in a Set, sum result
-
             let 9999 be an upper bound, since any 5 digit number multiplied by 1 is 5 digits, which combine to > 9
             Thus a candidate product has at most 4 digits
      */
@@ -36,19 +34,10 @@ public class Problem032 implements ProjectEulerRunner {
 
     private boolean productIsPandigital(int prod) {
         for (int i = 1; i <= prod; i++) {
-            if (prod % i == 0 && isPandigital("" + prod + i + prod / i)) {
+            if (prod % i == 0 && Library.isPandigital("" + prod + i + prod / i)) {
                 return true;
             }
         }
         return false;
-    }
-
-    private boolean isPandigital(String s) {
-        if (s.length() != 9) {
-            return false;
-        }
-        char[] c = s.toCharArray();
-        Arrays.sort(c);
-        return new String(c).equals("123456789");
     }
 }

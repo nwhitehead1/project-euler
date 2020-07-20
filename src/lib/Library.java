@@ -3,6 +3,7 @@ package lib;
 import lib.models.Node;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -166,12 +167,25 @@ public final class Library {
 
     /**
      * Euclidean method for finding the greatest common denominator
-     *
      * @param a first value > b
      * @param b second value
      * @return greatest common denominator
      */
     public static int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);
+    }
+
+    /**
+     * Check if a string is pandigital (ie. contains digits 1-9)
+     * @param s value to check
+     * @return true if pandigital, false otherwise
+     */
+    public static boolean isPandigital(String s) {
+        if (s.length() != 9) {
+            return false;
+        }
+        char[] c = s.toCharArray();
+        Arrays.sort(c);
+        return new String(c).equals("123456789");
     }
 }
