@@ -66,6 +66,16 @@ public final class Library {
         return String.valueOf(k);
     }
 
+    public static int reverseInt(int n) {
+        int reversed = 0;
+        while (n != 0) {
+            int digit = n % 10;
+            reversed = reversed * 10 + digit;
+            n /= 10;
+        }
+        return reversed;
+    }
+
     /**
      * @param root
      * @return longest path from root to leaf
@@ -156,6 +166,7 @@ public final class Library {
 
     /**
      * Euclidean method for finding the greatest common denominator
+     *
      * @param a first value > b
      * @param b second value
      * @return greatest common denominator
