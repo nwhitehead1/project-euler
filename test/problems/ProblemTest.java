@@ -53,5 +53,6 @@ public class ProblemTest {
         assertEquals("748317", new Problem037().run());
         assertEquals("932718654", new Problem038().run());
         assertEquals("840", new Problem039().run());
+        assertEquals("210", new Problem040().run());
     }
 }
