@@ -172,6 +172,7 @@ public final class Library {
      * @return greatest common denominator
      */
     public static int gcd(int a, int b) {
+        System.out.println(a + ", " + b);
         return b == 0 ? a : gcd(b, a % b);
     }
 
