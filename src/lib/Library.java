@@ -167,6 +167,7 @@ public final class Library {
 
     /**
      * Euclidean method for finding the greatest common denominator
+     *
      * @param a first value > b
      * @param b second value
      * @return greatest common denominator
@@ -177,6 +178,7 @@ public final class Library {
 
     /**
      * Check if a string is pandigital (ie. contains digits 1-9)
+     *
      * @param s value to check
      * @return true if pandigital, false otherwise
      */
@@ -187,5 +189,20 @@ public final class Library {
         char[] c = s.toCharArray();
         Arrays.sort(c);
         return new String(c).equals("123456789");
+    }
+
+    /**
+     * Based on Wikipedia definition for verifying pandigital digits efficiently
+     * @param n value to check
+     * @return true if pandigital, false otherwise
+     */
+    public static boolean isPandigital(int n) {
+        int digits = 0;
+        int count = 0;
+        for (; n > 0; n /= 10, ++count) {
+            if (digits == (digits |= 1 << (n - ((n / 10) * 10) - 1)))
+                return false;
+        }
+        return digits == (1 << count) - 1;
     }
 }
