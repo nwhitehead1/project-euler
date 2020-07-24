@@ -1,19 +1,16 @@
 package problems;
 
 import org.junit.Test;
-import runner.ProjectEulerRunner;
 
 import static org.junit.Assert.assertEquals;
 
 public class ProblemTest {
 
-    ProjectEulerRunner runner;
-
     /**
      * Test method to quickly verify solutions
      */
     @Test
-    public void problems()  {
+    public void problems() {
         assertEquals("233168", new Problem001().run());
         assertEquals("4613732", new Problem002().run());
         assertEquals("6857", new Problem003().run());
@@ -56,5 +53,6 @@ public class ProblemTest {
         assertEquals("210", new Problem040().run());
         assertEquals("7652413", new Problem041().run());
         assertEquals("162", new Problem042().run());
+        assertEquals("16695334890", new Problem043().run());
     }
 }

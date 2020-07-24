@@ -5,12 +5,13 @@ import lib.models.Node;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public final class Library {
 
     /**
-     * @param n
+     * @param n number
      * @return sum from 1^2 to n^2
      */
     public static int sumOfSquares(int n) {
@@ -18,7 +19,7 @@ public final class Library {
     }
 
     /**
-     * @param n
+     * @param n number
      * @return sum from 1 to n
      */
     public static int increasingSum(int n) {
@@ -26,7 +27,7 @@ public final class Library {
     }
 
     /**
-     * @param n
+     * @param n number
      * @return if true - prime, else not prime
      */
     public static boolean isPrime(int n) {
@@ -46,7 +47,7 @@ public final class Library {
         intArr.add(n);
 
         for (int i = 0; i < intArr.size(); i++) {
-            if (intArr.get(i) != intArr.get(intArr.size() - 1 - i)) {
+            if (!intArr.get(i).equals(intArr.get(intArr.size() - 1 - i))) {
                 return false;
             }
         }
@@ -54,7 +55,7 @@ public final class Library {
     }
 
     /**
-     * @param n
+     * @param n string
      * @return reversed value of input string
      */
     public static String reverseString(String n) {
@@ -78,7 +79,7 @@ public final class Library {
     }
 
     /**
-     * @param root
+     * @param root Node object
      * @return longest path from root to leaf
      */
     public static Integer getHeaviestPath(Node root) {
@@ -90,7 +91,7 @@ public final class Library {
     }
 
     /**
-     * @param n
+     * @param n number
      * @return sum of the proper divisors of n (O(sqrt(n) time)
      */
     public static int sumOfProperDivisors(int n) {
@@ -110,7 +111,7 @@ public final class Library {
     }
 
     /**
-     * @param n
+     * @param n number
      * @return number of proper divisors of n
      */
     public static int numberOfDivisors(int n) {
@@ -130,7 +131,7 @@ public final class Library {
     }
 
     /**
-     * @param k
+     * @param k check factoradic candidate
      * @return factoradic representation of a number k. k = q(n!) + r
      */
     public static List<Integer> factoradicRepresentation(int k) {
@@ -179,20 +180,27 @@ public final class Library {
     /**
      * Check if a string is pandigital (ie. contains digits 1-9)
      *
-     * @param s value to check
+     * @param s     value to check
+     * @param start start...end pandigital number
+     * @param end   start...end pandigital number
      * @return true if pandigital, false otherwise
      */
-    public static boolean isPandigital(String s) {
-        if (s.length() != 9) {
+    public static boolean isPandigital(String s, int start, int end) {
+        if (start > end) {
+            return false;
+        }
+        if (s.length() != (end - start + 1)) {
             return false;
         }
         char[] c = s.toCharArray();
         Arrays.sort(c);
-        return new String(c).equals("123456789");
+        String sortedCheck = IntStream.rangeClosed(start, end).boxed().sorted().map(String::valueOf).collect(Collectors.joining());
+        return new String(c).equals(sortedCheck);
     }
 
     /**
      * Based on Wikipedia definition for verifying pandigital digits efficiently
+     *
      * @param n value to check
      * @return true if pandigital, false otherwise
      */
@@ -204,5 +212,30 @@ public final class Library {
                 return false;
         }
         return digits == (1 << count) - 1;
+    }
+
+    /**
+     * Iterative algorithm for generating permutations. Insert nth element into (n-1)! remaining permutations
+     *
+     * @param array to permutate
+     * @param n     permutation size, remaining elements (array.size())
+     * @return permutations of array in O(n!)
+     */
+    public static List<List<Integer>> permutations(List<Integer> array, int n) {
+        List<List<Integer>> generated = new ArrayList<>();
+        if (n == 1) {
+            List<Integer> permutation = new ArrayList<>();
+            permutation.add(array.get(n - 1));
+            generated.add(permutation);
+        } else {
+            for (List<Integer> permutation : permutations(array, n - 1)) {
+                for (int i = 0; i <= permutation.size(); i++) {
+                    ArrayList<Integer> new_permutation = new ArrayList<>(permutation);
+                    new_permutation.add(i, array.get(n - 1));
+                    generated.add(new_permutation);
+                }
+            }
+        }
+        return generated;
     }
 }

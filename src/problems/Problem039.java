@@ -12,14 +12,14 @@ public class Problem039 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = maxIntegerRightTrianglesCount(1000);
+        int result = maxIntegerRightTrianglesCount();
         return Integer.toString(result);
     }
 
-    private int maxIntegerRightTrianglesCount(int perimeterLimit) {
+    private int maxIntegerRightTrianglesCount() {
         long solutions = 0;
         int perimeterMax = 0;
-        for (int i = 1; i <= perimeterLimit; i++) {
+        for (int i = 1; i <= 1000; i++) {
             long maxSolutions = integerRightTrianglesCount(i);
             if (maxSolutions > solutions) {
                 perimeterMax = i;

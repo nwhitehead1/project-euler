@@ -30,7 +30,7 @@ public class Problem031 implements ProjectEulerRunner {
             return 0;
         }
         // If there are no coins and n > 0
-        if (m < 1 && n > 0) {
+        if (m < 1) {
             return 0;
         }
 

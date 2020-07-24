@@ -13,7 +13,7 @@ public class Problem029 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = distinctPowers(2, 100);
+        int result = distinctPowers(2);
         return Integer.toString(result);
     }
 
@@ -22,10 +22,10 @@ public class Problem029 implements ProjectEulerRunner {
             a^b, where lower <= a,b <= upper
             Brute force the solution... maybe revisit and do something clever to make complexity better than O(n^2)
      */
-    private int distinctPowers(int lower, int upper) {
+    private int distinctPowers(int lower) {
         Set<Double> powerSet = new HashSet<>();
-        for (int a = lower; a <= upper; a++) {
-            for (int b = lower; b <= upper; b++) {
+        for (int a = lower; a <= 100; a++) {
+            for (int b = lower; b <= 100; b++) {
                 powerSet.add(Math.pow(a, b));
             }
         }

@@ -16,15 +16,14 @@ public class Problem010 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        String result = summationOfPrimes(2000000);
-        return result;
+        return summationOfPrimes();
     }
 
-    private String summationOfPrimes(int limit) {
+    private String summationOfPrimes() {
         AdditionHelper helper = new AdditionHelper();
         String sum = "";
-        List<Integer> primes = IntStream.rangeClosed(2, limit).boxed().parallel()
-                .filter(num -> Library.isPrime(num)).collect(Collectors.toList());
+        List<Integer> primes = IntStream.rangeClosed(2, 2000000).boxed().parallel()
+                .filter(Library::isPrime).collect(Collectors.toList());
         helper.setFirst(Integer.toString(primes.get(0)));
         for (int i = 1; i < primes.size(); i++) {
             helper.setSecond(Integer.toString(primes.get(i)));

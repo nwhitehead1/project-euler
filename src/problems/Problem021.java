@@ -13,12 +13,12 @@ public class Problem021 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = amicablePairs(10000);
+        int result = amicablePairs();
         return Integer.toString(result);
     }
 
-    private int amicablePairs(int limit) {
-        return IntStream.rangeClosed(1, limit).filter(num -> isAmicablePair(num, Library.sumOfProperDivisors(num))).sum();
+    private int amicablePairs() {
+        return IntStream.rangeClosed(1, 10000).filter(num -> isAmicablePair(num, Library.sumOfProperDivisors(num))).sum();
     }
 
     private boolean isAmicablePair(int value, int valuesSumOfProperDivisors) {
@@ -26,11 +26,7 @@ public class Problem021 implements ProjectEulerRunner {
             return false;
         } else {
             int x = Library.sumOfProperDivisors(valuesSumOfProperDivisors);
-            if (x == value) {
-                return true;
-            } else {
-                return false;
-            }
+            return x == value;
         }
     }
 }

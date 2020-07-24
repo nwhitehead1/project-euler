@@ -12,11 +12,11 @@ public class Problem001 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        return Integer.toString(divisibleSequential(1000));
+        return Integer.toString(divisibleSequential());
     }
 
-    private int divisibleSequential(int range) {
-        return IntStream.range(1, range)
+    private int divisibleSequential() {
+        return IntStream.range(1, 1000)
                 .filter(n -> n % 3 == 0 || n % 5 == 0)
                 .sum();
     }

@@ -12,15 +12,15 @@ public class Problem014 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = longestCollatzChain(1000000);
+        int result = longestCollatzChain();
         return Integer.toString(result);
     }
 
-    private int longestCollatzChain(int limit)  {
-        LinkedList<Long> list = new LinkedList<Long>();
+    private int longestCollatzChain()  {
+        LinkedList<Long> list = new LinkedList<>();
         long length = 0;
         int result = 0;
-        for (int j = 10; j < limit; j++) {
+        for (int j = 10; j < 1000000; j++) {
             long i = j;
             while (i != 1) {
                 if (i % 2 == 0) {

@@ -112,8 +112,7 @@ public class Problem013 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        String result = getSums();
-        return result;
+        return getSums();
     }
 
     private String getSums() {

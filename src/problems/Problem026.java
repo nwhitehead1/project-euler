@@ -13,12 +13,12 @@ public class Problem026 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = reciprocalCycles(1000);
+        int result = reciprocalCycles();
         return Integer.toString(result);
     }
 
-    private int reciprocalCycles(int limit) {
-        int longest = 0, next = 0, result = 0;
+    private int reciprocalCycles() {
+        int longest = 0, next, result = 0;
         for (int i = 2; i < 1000; i++) {
             next = getLongestCycle(i);
             if (next > longest) {

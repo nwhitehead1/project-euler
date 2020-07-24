@@ -77,8 +77,8 @@ public class Problem033 implements ProjectEulerRunner {
     }
 
     private Fraction multiplyFractions(List<Fraction> fractions) {
-        int denom = fractions.stream().map(d -> d.getDenominator()).reduce(1, (a, b) -> a * b);
-        int num = fractions.stream().map(n -> n.getNumerator()).reduce(1, (a, b) -> a * b);
+        int denom = fractions.stream().map(Fraction::getDenominator).reduce(1, (a, b) -> a * b);
+        int num = fractions.stream().map(Fraction::getNumerator).reduce(1, (a, b) -> a * b);
         int greatestCommonDivisor = Library.gcd(num, denom);
         return new Fraction(num / greatestCommonDivisor, denom / greatestCommonDivisor);
     }

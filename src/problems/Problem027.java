@@ -28,7 +28,7 @@ public class Problem027 implements ProjectEulerRunner {
     private int quadraticPrimes() {
         int nMax = 0, aMax = 0, bMax = 0;
         List<Integer> bValues = IntStream.rangeClosed(0, 1000).boxed()
-                .filter(i -> Library.isPrime(i)).sorted().collect(Collectors.toList());
+                .filter(Library::isPrime).sorted().collect(Collectors.toList());
 
         for (int a = -999; a < 1000; a += 2) {
             for (Integer b : bValues) {

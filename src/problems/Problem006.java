@@ -11,7 +11,7 @@ public class Problem006 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = squareOfSum(100) - Library.sumOfSquares(100);
+        int result = squareOfSum() - Library.sumOfSquares(100);
         return Integer.toString(result);
     }
 
@@ -19,8 +19,8 @@ public class Problem006 implements ProjectEulerRunner {
         Thoughts:
             Use time-efficient sum calculation without looping
      */
-    private int squareOfSum(int n) {
-        int sum = Library.increasingSum(n);
+    private int squareOfSum() {
+        int sum = Library.increasingSum(100);
         return sum * sum;
     }
 }

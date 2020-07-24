@@ -3,9 +3,6 @@ package problems;
 import lib.helpers.FileHelper;
 import runner.ProjectEulerRunner;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Problem042 implements ProjectEulerRunner {
 
     private static final String FILE_PATH = "/files/p042_words.txt";
@@ -21,7 +18,7 @@ public class Problem042 implements ProjectEulerRunner {
     }
 
     private int countTriangleWords(String file) {
-        List<String> words = Arrays.asList(file.replace("\"", "").split(","));
+        String[] words = file.replace("\"", "").split(",");
         int count = 0;
         for (String word : words) {
             if (isTriangleWord(word)) {

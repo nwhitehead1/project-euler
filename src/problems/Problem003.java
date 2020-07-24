@@ -22,7 +22,7 @@ public class Problem003 implements ProjectEulerRunner {
         int max = generateSqrt(value);
         for (int i = 2; i < max; i++) {
             if ((i & 1) == 0) {
-                continue;
+                // Do nothing
             } else {
                 if (value.mod(BigInteger.valueOf(i)).equals(BigInteger.ZERO)) {
                     if (Library.isPrime(i) && i > largestPrime) {
@@ -41,7 +41,7 @@ public class Problem003 implements ProjectEulerRunner {
     private int generateSqrt(BigInteger limit) {
         BigInteger index = BigInteger.ONE;
         for (; ; ) {
-            if (!(index.multiply(index).compareTo(limit) == -1)) {
+            if (!(index.multiply(index).compareTo(limit) < 0)) {
                 return index.intValue() - 1;
             } else {
                 index = index.add(BigInteger.ONE);
