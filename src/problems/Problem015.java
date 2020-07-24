@@ -12,7 +12,7 @@ public class Problem015 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        BigInteger result = latticePaths(20);
+        BigInteger result = latticePaths();
         return result.toString();
     }
 
@@ -21,11 +21,10 @@ public class Problem015 implements ProjectEulerRunner {
             Number of lattice paths from (0,0) to (n,k) is (n+k)C(n), in this instance n=k=20
             Therefore, (40)C(20) = 40! / (20! x (40-20)!)
      */
-    private BigInteger latticePaths(int gridSize)  {
-        BigInteger numerator = factorial(2*gridSize);
-        BigInteger denominator = factorial(gridSize).multiply(factorial(gridSize));
-        BigInteger result = numerator.divide(denominator);
-        return result;
+    private BigInteger latticePaths()  {
+        BigInteger numerator = factorial(2* 20);
+        BigInteger denominator = factorial(20).multiply(factorial(20));
+        return numerator.divide(denominator);
     }
 
     private BigInteger factorial(int n) {

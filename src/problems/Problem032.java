@@ -34,7 +34,7 @@ public class Problem032 implements ProjectEulerRunner {
 
     private boolean productIsPandigital(int prod) {
         for (int i = 1; i <= prod; i++) {
-            if (prod % i == 0 && Library.isPandigital("" + prod + i + prod / i)) {
+            if (prod % i == 0 && Library.isPandigital("" + prod + i + prod / i, 1, 9)) {
                 return true;
             }
         }

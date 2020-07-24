@@ -39,8 +39,8 @@ public class Problem041 implements ProjectEulerRunner {
      */
     private int largestPandigitalPrimeFaster() {
         List<Integer> pandigitalCongruenceLength = new ArrayList<>();
-        IntPredicate pandigital = num -> Library.isPandigital(num);
-        IntPredicate prime = num -> Library.isPrime(num);
+        IntPredicate pandigital = Library::isPandigital;
+        IntPredicate prime = Library::isPrime;
         for (int i = 1; i < 9; i++) {
             int sum = 0;
             for (int j = 1; j <= i; j++) {
@@ -50,7 +50,7 @@ public class Problem041 implements ProjectEulerRunner {
                 pandigitalCongruenceLength.add(i);
             }
         }
-        Collections.sort(pandigitalCongruenceLength, Collections.reverseOrder());
+        pandigitalCongruenceLength.sort(Collections.reverseOrder());
         for (Integer digitLength : pandigitalCongruenceLength) {
             int upperBound = 0;
             for (int i = 1; i <= digitLength; i++) {
@@ -58,36 +58,15 @@ public class Problem041 implements ProjectEulerRunner {
             }
             int lowerBound = Library.reverseInt(upperBound);
             int finalUpperBound = upperBound;
-            return IntStream.rangeClosed(lowerBound, upperBound)
+            OptionalInt result = IntStream.rangeClosed(lowerBound, upperBound)
                     .map(num -> finalUpperBound - num + lowerBound - 1)
                     .parallel()
                     .filter(pandigital.and(prime))
-                    .findFirst().getAsInt();
+                    .findFirst();
+            if (result.isPresent()) {
+                return result.getAsInt();
+            }
         }
         return 0;
-    }
-
-    /*
-        Thoughts:
-            Largest pandigital prime must be at most less than 987654321
-            Predicate to check pandigital
-            Predicate to check primality
-            Find first occurrence
-            Brute force approach - can be improved
-     */
-    private int largestPandigitalPrime() {
-        int limit = 987654321;
-        int start = 0;
-
-        IntPredicate pandigital = num -> Library.isPandigital(num);
-        IntPredicate prime = num -> Library.isPrime(num);
-
-        OptionalInt result = IntStream.rangeClosed(start, limit)
-                .parallel()
-                .map(num -> limit - num + start - 1)
-                .filter(pandigital.and(prime))
-                .findFirst();
-
-        return result.getAsInt();
     }
 }

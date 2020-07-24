@@ -4,7 +4,7 @@ import lib.Library;
 import runner.ProjectEulerRunner;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -19,7 +19,7 @@ public class Problem035 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = circularPrimes(1000000);
+        int result = circularPrimes();
         return Integer.toString(result);
     }
 
@@ -30,11 +30,11 @@ public class Problem035 implements ProjectEulerRunner {
             ONLY count primes where ALL digit rotations are prime
             Remove primes where a digit is divisible by 2 or 5
      */
-    private int circularPrimes(int limit) {
-        Predicate<Integer> primality = num -> Library.isPrime(num);
-        Predicate<Integer> primeCandidate = num -> isPrimeCandidate(num);
+    private int circularPrimes() {
+        Predicate<Integer> primality = Library::isPrime;
+        Predicate<Integer> primeCandidate = this::isPrimeCandidate;
 
-        List<Integer> primes = IntStream.rangeClosed(2, limit)
+        List<Integer> primes = IntStream.rangeClosed(2, 1000000)
                 .boxed()
                 .parallel()
                 .filter(primality.and(primeCandidate))
@@ -76,7 +76,7 @@ public class Problem035 implements ProjectEulerRunner {
             Scenario where prime doesn't contain an even digit, or 5
      */
     private List<Integer> digitRotations(int prime) {
-        List<Integer> rotations = new ArrayList<>(Arrays.asList(prime));
+        List<Integer> rotations = new ArrayList<>(Collections.singletonList(prime));
         int length = (int) (Math.log10(prime) + 1);
         int firstDigit, initialValue = prime;
         // Digit rotations, eg. say prime = 430

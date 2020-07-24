@@ -11,14 +11,14 @@ public class Problem007 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = nthPrime(10001);
+        int result = nthPrime();
         return Integer.toString(result);
     }
 
-    private int nthPrime(int n) {
+    private int nthPrime() {
         int primeCount = 1;
         int i = 3;
-        while (primeCount < n) {
+        while (primeCount < 10001) {
             if ((i & 1) == 0) {
                 continue;
             } else {

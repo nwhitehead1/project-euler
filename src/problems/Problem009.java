@@ -2,6 +2,7 @@ package problems;
 
 import runner.ProjectEulerRunner;
 
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 public class Problem009 implements ProjectEulerRunner {
@@ -12,17 +13,16 @@ public class Problem009 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = specialPythagoreanTriplet(1000);
+        int result = specialPythagoreanTriplet();
         return Integer.toString(result);
     }
 
-    private int specialPythagoreanTriplet(int n) {
-        return IntStream.rangeClosed(1, n).boxed()
-                .flatMapToInt(a -> IntStream.rangeClosed(a, n)
-                        .filter(b -> a + b + Math.sqrt(a * a + b * b) == n)
+    private int specialPythagoreanTriplet() {
+        OptionalInt result = IntStream.rangeClosed(1, 1000).boxed()
+                .flatMapToInt(a -> IntStream.rangeClosed(a, 1000)
+                        .filter(b -> a + b + Math.sqrt(a * a + b * b) == 1000)
                         .map(b -> a * b * (int) Math.sqrt(a * a + b * b)))
-                .findFirst()
-                .getAsInt();
-
+                .findFirst();
+        return result.isPresent() ? result.getAsInt() : 0;
     }
 }

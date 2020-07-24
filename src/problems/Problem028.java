@@ -10,7 +10,7 @@ public class Problem028 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = numberSpiralDiagonals(1001);
+        int result = numberSpiralDiagonals();
         return Integer.toString(result);
     }
 
@@ -21,9 +21,9 @@ public class Problem028 implements ProjectEulerRunner {
             diagonals = 13, 17, 21, 25, cornerDiff = 4, shape=5x5
             diagonals = 31, 37, 43, 49, cornerDiff = 6, shape=7x7
      */
-    private int numberSpiralDiagonals(int shape) {
+    private int numberSpiralDiagonals() {
         int diagonal = 1, sum = 1, cornerDiff = 2;
-        for (int i = 3; i <= shape; i += 2) {
+        for (int i = 3; i <= 1001; i += 2) {
             // 4 corners each iterated box
             for (int j = 0; j < 4; j++) {
                 diagonal += cornerDiff;

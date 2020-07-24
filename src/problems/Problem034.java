@@ -48,7 +48,7 @@ public class Problem034 implements ProjectEulerRunner {
     private boolean isFactorialEqualToDigitFactorials(int factorial) {
         List<Integer> factorialDigits = collectDigits(factorial, new ArrayList<>());
         int test = factorialDigits.stream()
-                .mapToInt(d -> Library.factorial(d)).sum();
+                .mapToInt(Library::factorial).sum();
         return (test == factorial);
     }
 

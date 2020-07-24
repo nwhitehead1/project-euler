@@ -10,14 +10,14 @@ public class Problem005 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = smallestMultiple(20);
+        int result = smallestMultiple();
         return Integer.toString(result);
     }
 
-    private int smallestMultiple(int range) {
+    private int smallestMultiple() {
         int smallest = 2520;
         for (int i = smallest; ; i += 2) {
-            if (isDivisibleRange(i, 20)) {
+            if (isDivisibleRange(i)) {
                 smallest = i;
                 break;
             }
@@ -25,11 +25,11 @@ public class Problem005 implements ProjectEulerRunner {
         return smallest;
     }
 
-    private boolean isDivisibleRange(int n, int range) {
+    private boolean isDivisibleRange(int n) {
         if ((n & 1) != 0) {
             return false;
         }
-        for (int i = 3; i <= range; i++) {
+        for (int i = 3; i <= 20; i++) {
             if (n % i != 0) {
                 return false;
             }

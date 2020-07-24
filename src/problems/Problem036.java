@@ -13,16 +13,16 @@ public class Problem036 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = doubleBasePalindromes(1000000);
+        int result = doubleBasePalindromes();
         return Integer.toString(result);
     }
 
-    private int doubleBasePalindromes(int limit) {
-        return IntStream.rangeClosed(0, limit)
+    private int doubleBasePalindromes() {
+        return IntStream.rangeClosed(0, 1000000)
                 .boxed()
-                .filter(num -> Library.palindrome(num))
+                .filter(Library::palindrome)
                 .filter(d -> palindrome(getBinaryString(d)))
-                .reduce(0, (a, b) -> a + b);
+                .reduce(0, Integer::sum);
     }
 
     // TODO: Could be library method? Make it cleaner to deal with more cases.

@@ -36,7 +36,7 @@ public class AdditionHelper {
         String firstValue = this.first;
         String secondValue = this.second;
         int sum, next, carry = 0;
-        String revSum = null, revNext = null;
+        String revSum, revNext;
         StringBuilder sumBuilder = new StringBuilder();
 
         // Check to see if the Strings are actually numbers
@@ -138,10 +138,7 @@ public class AdditionHelper {
     }
 
     private String padSmallerValue(String larger, String smaller) {
-        StringBuilder zeros = new StringBuilder();
-        for (int i = smaller.length(); i < larger.length(); i++) {
-            zeros.append("0");
-        }
-        return zeros.append(smaller).toString();
+        return "0".repeat(Math.max(0, larger.length() - smaller.length())) +
+                smaller;
     }
 }

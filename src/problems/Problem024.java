@@ -17,8 +17,7 @@ public class Problem024 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        String result = lexicographicPermutations(IntStream.rangeClosed(0, 9).boxed().collect(Collectors.toList()));
-        return result;
+        return lexicographicPermutations(IntStream.rangeClosed(0, 9).boxed().collect(Collectors.toList()));
     }
 
     private String lexicographicPermutations(List<Integer> inputElements) {

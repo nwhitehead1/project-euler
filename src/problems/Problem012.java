@@ -11,15 +11,15 @@ public class Problem012 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        int result = highlyDevisibleTriangularNumber(500);
+        int result = highlyDevisibleTriangularNumber();
         return Integer.toString(result);
     }
 
-    private int highlyDevisibleTriangularNumber(int divisorsLimit) {
+    private int highlyDevisibleTriangularNumber() {
         int currentTriangleNumber = 0;
         for (int i = 1; ; i++) {
             currentTriangleNumber += i;
-            if (Library.numberOfDivisors(currentTriangleNumber) >= divisorsLimit) {
+            if (Library.numberOfDivisors(currentTriangleNumber) >= 500) {
                 return currentTriangleNumber;
             }
         }

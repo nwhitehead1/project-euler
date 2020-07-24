@@ -53,7 +53,7 @@ public class Problem011 implements ProjectEulerRunner {
     }
 
     private int maxRight(int[][] grid) {
-        int max = 0, right = 0;
+        int max = 0, right;
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 17; j++) {
                 right = grid[i][j] * grid[i][j + 1] * grid[i][j + 2] * grid[i][j + 3];
@@ -65,7 +65,7 @@ public class Problem011 implements ProjectEulerRunner {
     }
 
     private int maxDown(int[][] grid) {
-        int max = 0, down = 0;
+        int max = 0, down;
         for (int i = 0; i < 17; i++) {
             for (int j = 0; j < 20; j++) {
                 down = grid[i][j] * grid[i + 1][j] * grid[i + 2][j] * grid[i + 3][j];
@@ -77,7 +77,7 @@ public class Problem011 implements ProjectEulerRunner {
     }
 
     private int maxDiagLR(int[][] grid) {
-        int max = 0, diag = 0;
+        int max = 0, diag;
         for (int i = 0; i < 17; i++) {
             for (int j = 0; j < 17; j++) {
                 diag = grid[i][j] * grid[i + 1][j + 1] * grid[i + 2][j + 2] * grid[i + 3][j + 3];
@@ -89,7 +89,7 @@ public class Problem011 implements ProjectEulerRunner {
     }
 
     private int maxDiagRL(int[][] grid) {
-        int max = 0, diag = 0;
+        int max = 0, diag;
         for (int i = 3; i < 20; i++) {
             for (int j = 3; j < 20; j++) {
                 diag = grid[i - 3][j] * grid[i - 2][j - 1] * grid[i - 1][j - 2] * grid[i][j - 3];

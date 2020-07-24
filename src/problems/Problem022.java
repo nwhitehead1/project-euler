@@ -18,13 +18,12 @@ public class Problem022 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        String result = namesScores();
-        return result;
+        return namesScores();
     }
 
     private String namesScores() {
         FileHelper fileReader = new FileHelper();
-        String fileString = "";
+        String fileString;
         String nameScoreTotal = "0";
         fileString = fileReader.readFile(FILE_PATH);
         List<String> cleanFileArray = Arrays.asList(fileString.replace("\"", "").split(","));
@@ -42,8 +41,8 @@ public class Problem022 implements ProjectEulerRunner {
     private int getAlphabeticalValue(String n, int index) {
         int stringTotal = 0;
         char[] charArr = n.toCharArray();
-        for (int i = 0; i < charArr.length; i++) {
-            stringTotal += charArr[i] - 64;
+        for (char c : charArr) {
+            stringTotal += c - 64;
         }
         return stringTotal * index;
     }

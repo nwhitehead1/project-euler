@@ -11,8 +11,7 @@ public class Problem038 implements ProjectEulerRunner {
 
     @Override
     public String run() {
-        String result = largestPandigitalMultiple();
-        return result;
+        return largestPandigitalMultiple();
     }
 
     /*
@@ -35,8 +34,8 @@ public class Problem038 implements ProjectEulerRunner {
     private String largestPandigitalMultiple() {
         String result = "";
         for (int i = 9876; i > 9123; i--) {
-            String s = new String("" + i + (2 * i));
-            if (Library.isPandigital(s)) {
+            String s = "" + i + (2 * i);
+            if (Library.isPandigital(s, 1, 9)) {
                 result = s;
                 break;
             }

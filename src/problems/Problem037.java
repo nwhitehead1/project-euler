@@ -41,7 +41,7 @@ public class Problem037 implements ProjectEulerRunner {
         }
 
         rightTruncatablePrimes.removeAll(remove);
-        return rightTruncatablePrimes.stream().reduce(0, (a, b) -> a + b);
+        return rightTruncatablePrimes.stream().reduce(0, Integer::sum);
     }
 
     /*
@@ -61,7 +61,7 @@ public class Problem037 implements ProjectEulerRunner {
                 nextKthDigitTruncatable.add(candidate + append);
             }
         }
-        nextKthDigitTruncatable = nextKthDigitTruncatable.parallelStream().filter(num -> Library.isPrime(num)).collect(Collectors.toList());
+        nextKthDigitTruncatable = nextKthDigitTruncatable.parallelStream().filter(Library::isPrime).collect(Collectors.toList());
         if (!nextKthDigitTruncatable.isEmpty()) {
             result.addAll(nextKthDigitTruncatable);
             return snowballPrimes(nextKthDigitTruncatable, result);
