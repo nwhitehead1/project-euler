@@ -13,7 +13,7 @@ public class Problem004 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = largestPalindromeThreeDigitProduct();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

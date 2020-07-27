@@ -15,7 +15,7 @@ public class Problem008 implements ProjectEulerCallable {
     @Override
     public String call() {
         BigInteger result = length13Substrings(NUMBER);
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return result.toString();
     }
 

@@ -12,7 +12,7 @@ public class Problem045 implements ProjectEulerCallable {
     @Override
     public String call() {
         long test = nextHexagonalNumber();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Long.toString(test);
     }
 

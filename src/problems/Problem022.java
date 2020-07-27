@@ -19,7 +19,7 @@ public class Problem022 implements ProjectEulerCallable {
     @Override
     public String call() {
         String result = namesScores();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return result;
     }
 

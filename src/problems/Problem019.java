@@ -11,7 +11,7 @@ public class Problem019 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = countingSundays(1, 1, 1900);
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

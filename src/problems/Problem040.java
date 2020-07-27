@@ -15,7 +15,7 @@ public class Problem040 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = champernownesConstant(100, 1000, 10000, 100000, 1000000);
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

@@ -13,7 +13,7 @@ public class Problem014 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = longestCollatzChain();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 
