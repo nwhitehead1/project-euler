@@ -1,19 +1,20 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Problem026 implements ProjectEulerRunner {
+public class Problem026 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem026().run());
+        System.out.println(new Problem026().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = reciprocalCycles();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

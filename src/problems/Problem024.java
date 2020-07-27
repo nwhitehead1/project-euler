@@ -1,23 +1,25 @@
 package problems;
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Problem024 implements ProjectEulerRunner {
+public class Problem024 implements ProjectEulerCallable {
 
     private static final int LIMIT = 1000000;
 
     public static void main(String[] args) {
-        System.out.println(new Problem024().run());
+        System.out.println(new Problem024().call());
     }
 
     @Override
-    public String run() {
-        return lexicographicPermutations(IntStream.rangeClosed(0, 9).boxed().collect(Collectors.toList()));
+    public String call() {
+        String result = lexicographicPermutations(IntStream.rangeClosed(0, 9).boxed().collect(Collectors.toList()));
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        return result;
     }
 
     private String lexicographicPermutations(List<Integer> inputElements) {

@@ -2,20 +2,21 @@ package problems;
 
 import lib.Library;
 import lib.models.Fraction;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Problem033 implements ProjectEulerRunner {
+public class Problem033 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem033().run());
+        System.out.println(new Problem033().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = digitCancellingFractions();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

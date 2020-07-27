@@ -1,19 +1,20 @@
 package problems;
 
 import lib.helpers.FileHelper;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem042 implements ProjectEulerRunner {
+public class Problem042 implements ProjectEulerCallable {
 
     private static final String FILE_PATH = "/files/p042_words.txt";
 
     public static void main(String[] args) {
-        System.out.println(new Problem042().run());
+        System.out.println(new Problem042().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = countTriangleWords(new FileHelper().readFile(FILE_PATH));
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

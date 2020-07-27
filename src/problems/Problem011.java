@@ -1,8 +1,8 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem011 implements ProjectEulerRunner {
+public class Problem011 implements ProjectEulerCallable {
 
     private static final String GRID = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08\r\n"
             + "49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00\r\n"
@@ -26,17 +26,18 @@ public class Problem011 implements ProjectEulerRunner {
             + "01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48";
 
     public static void main(String[] args) {
-        System.out.println(new Problem011().run());
+        System.out.println(new Problem011().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int[][] grid = generateGrid();
         int maxRight = maxRight(grid);
         int maxDown = maxDown(grid);
         int maxDiagLR = maxDiagLR(grid);
         int maxDiagRL = maxDiagRL(grid);
         int max = Math.max(maxRight, Math.max(maxDown, Math.max(maxDiagRL, maxDiagLR)));
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(max);
     }
 

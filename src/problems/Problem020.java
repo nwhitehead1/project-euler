@@ -1,17 +1,18 @@
 package problems;
 
 import lib.helpers.AdditionHelper;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem020 implements ProjectEulerRunner {
+public class Problem020 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem020().run());
+        System.out.println(new Problem020().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = factorialDigitSum("100", 99, new AdditionHelper());
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

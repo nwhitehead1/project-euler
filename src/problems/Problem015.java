@@ -1,18 +1,19 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.math.BigInteger;
 
-public class Problem015 implements ProjectEulerRunner {
+public class Problem015 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem015().run());
+        System.out.println(new Problem015().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         BigInteger result = latticePaths();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return result.toString();
     }
 

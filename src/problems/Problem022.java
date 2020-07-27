@@ -2,23 +2,25 @@ package problems;
 
 import lib.helpers.AdditionHelper;
 import lib.helpers.FileHelper;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Problem022 implements ProjectEulerRunner {
+public class Problem022 implements ProjectEulerCallable {
 
     private static final String FILE_PATH = "/files/p022_names.txt";
 
     public static void main(String[] args) {
-        System.out.println(new Problem022().run());
+        System.out.println(new Problem022().call());
     }
 
     @Override
-    public String run() {
-        return namesScores();
+    public String call() {
+        String result = namesScores();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        return result;
     }
 
     private String namesScores() {

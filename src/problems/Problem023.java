@@ -1,7 +1,7 @@
 package problems;
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.HashSet;
 import java.util.List;
@@ -9,17 +9,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Problem023 implements ProjectEulerRunner {
+public class Problem023 implements ProjectEulerCallable {
 
     private static final int LIMIT = 28123;
 
     public static void main(String[] args) {
-        System.out.println(new Problem023().run());
+        System.out.println(new Problem023().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = nonAbundantSums();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

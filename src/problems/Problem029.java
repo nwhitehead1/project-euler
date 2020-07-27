@@ -1,19 +1,20 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Problem029 implements ProjectEulerRunner {
+public class Problem029 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem029().run());
+        System.out.println(new Problem029().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = distinctPowers(2);
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

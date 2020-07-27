@@ -1,9 +1,9 @@
 package problems;
 
 import lib.helpers.AdditionHelper;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem013 implements ProjectEulerRunner {
+public class Problem013 implements ProjectEulerCallable {
 
     private static final String NUMBER = "37107287533902102798797998220837590246510135740250\r\n"
             + "46376937677490009712648124896970078050417018260538\r\n"
@@ -107,12 +107,14 @@ public class Problem013 implements ProjectEulerRunner {
             + "53503534226472524250874054075591789781264330331690";
 
     public static void main(String[] args) {
-        System.out.println(new Problem013().run());
+        System.out.println(new Problem013().call());
     }
 
     @Override
-    public String run() {
-        return getSums();
+    public String call() {
+        String result = getSums();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        return result;
     }
 
     private String getSums() {

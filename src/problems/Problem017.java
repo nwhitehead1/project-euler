@@ -1,8 +1,8 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem017 implements ProjectEulerRunner {
+public class Problem017 implements ProjectEulerCallable {
 
     private static final String[] ONES = new String[] {"", "one", "two", "three", "four", "five", "six", "seven",
             "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
@@ -11,12 +11,13 @@ public class Problem017 implements ProjectEulerRunner {
             "eighty", "ninety"};
 
     public static void main(String[] args) {
-        System.out.println(new Problem017().run());
+        System.out.println(new Problem017().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = numberLetterCountsToOneThousand();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

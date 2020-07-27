@@ -2,21 +2,23 @@ package problems;
 
 import lib.Library;
 import lib.helpers.AdditionHelper;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Problem010 implements ProjectEulerRunner {
+public class Problem010 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem010().run());
+        System.out.println(new Problem010().call());
     }
 
     @Override
-    public String run() {
-        return summationOfPrimes();
+    public String call() {
+        String result = summationOfPrimes();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        return result;
     }
 
     private String summationOfPrimes() {
