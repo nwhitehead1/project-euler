@@ -1,16 +1,17 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem028 implements ProjectEulerRunner {
+public class Problem028 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem028().run());
+        System.out.println(new Problem028().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = numberSpiralDiagonals();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

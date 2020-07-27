@@ -1,19 +1,20 @@
 package problems;
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.math.BigInteger;
 
-public class Problem003 implements ProjectEulerRunner {
+public class Problem003 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem003().run());
+        System.out.println(new Problem003().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = largestPrimeFactor(new BigInteger("600851475143"));
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

@@ -2,9 +2,9 @@ package problems;
 
 import lib.Library;
 import lib.models.Node;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem018 implements ProjectEulerRunner {
+public class Problem018 implements ProjectEulerCallable {
 
     private static final String TREE = "75\r\n" + "95 64\r\n" + "17 47 82\r\n" + "18 35 87 10\r\n"
             + "20 04 82 47 65\r\n" + "19 01 23 75 03 34\r\n" + "88 02 77 73 07 63 67\r\n"
@@ -14,12 +14,13 @@ public class Problem018 implements ProjectEulerRunner {
             + "04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
 
     public static void main(String[] args) {
-        System.out.println(new Problem018().run());
+        System.out.println(new Problem018().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = maximumPathSum();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

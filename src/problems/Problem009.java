@@ -1,19 +1,20 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
-public class Problem009 implements ProjectEulerRunner {
+public class Problem009 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem009().run());
+        System.out.println(new Problem009().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = specialPythagoreanTriplet();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

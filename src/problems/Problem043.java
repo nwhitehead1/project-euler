@@ -2,21 +2,23 @@ package problems;
 
 import lib.Library;
 import lib.helpers.AdditionHelper;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Problem043 implements ProjectEulerRunner {
+public class Problem043 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem043().run());
+        System.out.println(new Problem043().call());
     }
 
     @Override
-    public String run() {
-        return subStringDivisibility();
+    public String call() {
+        String result = subStringDivisibility();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        return result;
     }
 
     private String subStringDivisibility() {

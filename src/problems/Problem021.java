@@ -1,19 +1,20 @@
 package problems;
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.stream.IntStream;
 
-public class Problem021 implements ProjectEulerRunner {
+public class Problem021 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem021().run());
+        System.out.println(new Problem021().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = amicablePairs();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

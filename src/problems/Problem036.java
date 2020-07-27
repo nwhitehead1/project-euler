@@ -1,19 +1,20 @@
 package problems;
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.stream.IntStream;
 
-public class Problem036 implements ProjectEulerRunner {
+public class Problem036 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem036().run());
+        System.out.println(new Problem036().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = doubleBasePalindromes();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

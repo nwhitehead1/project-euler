@@ -1,17 +1,18 @@
 package problems;
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem012 implements ProjectEulerRunner {
+public class Problem012 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem012().run());
+        System.out.println(new Problem012().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = highlyDevisibleTriangularNumber();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

@@ -1,22 +1,23 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.LinkedList;
 
-public class Problem014 implements ProjectEulerRunner {
+public class Problem014 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem014().run());
+        System.out.println(new Problem014().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = longestCollatzChain();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 
-    private int longestCollatzChain()  {
+    private int longestCollatzChain() {
         LinkedList<Long> list = new LinkedList<>();
         long length = 0;
         int result = 0;

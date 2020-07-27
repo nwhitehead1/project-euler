@@ -2,17 +2,18 @@ package problems;
 
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem004 implements ProjectEulerRunner {
+public class Problem004 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem004().run());
+        System.out.println(new Problem004().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = largestPalindromeThreeDigitProduct();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

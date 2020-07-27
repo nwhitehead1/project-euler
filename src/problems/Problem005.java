@@ -1,16 +1,17 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem005 implements ProjectEulerRunner {
+public class Problem005 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem005().run());
+        System.out.println(new Problem005().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = smallestMultiple();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

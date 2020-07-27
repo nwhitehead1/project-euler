@@ -1,16 +1,17 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem002 implements ProjectEulerRunner {
+public class Problem002 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem002().run());
+        System.out.println(new Problem002().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = fibonacciToLimit(1, 2, 4000000);
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

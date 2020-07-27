@@ -1,20 +1,21 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Problem040 implements ProjectEulerRunner {
+public class Problem040 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem040().run());
+        System.out.println(new Problem040().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = champernownesConstant(100, 1000, 10000, 100000, 1000000);
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

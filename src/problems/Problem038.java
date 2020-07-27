@@ -1,17 +1,19 @@
 package problems;
 
 import lib.Library;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem038 implements ProjectEulerRunner {
+public class Problem038 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem038().run());
+        System.out.println(new Problem038().call());
     }
 
     @Override
-    public String run() {
-        return largestPandigitalMultiple();
+    public String call() {
+        String result = largestPandigitalMultiple();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        return result;
     }
 
     /*

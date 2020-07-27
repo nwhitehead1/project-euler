@@ -1,17 +1,18 @@
 package problems;
 
 import lib.helpers.AdditionHelper;
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem025 implements ProjectEulerRunner {
+public class Problem025 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem025().run());
+        System.out.println(new Problem025().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = nthDigitFibonacci("1", "1", 1000, new AdditionHelper());
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

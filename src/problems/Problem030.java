@@ -1,19 +1,20 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Problem030 implements ProjectEulerRunner {
+public class Problem030 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem030().run());
+        System.out.println(new Problem030().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = digitFifthPowers();
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 

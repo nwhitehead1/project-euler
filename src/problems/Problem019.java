@@ -1,16 +1,17 @@
 package problems;
 
-import runner.ProjectEulerRunner;
+import runner.ProjectEulerCallable;
 
-public class Problem019 implements ProjectEulerRunner {
+public class Problem019 implements ProjectEulerCallable {
 
     public static void main(String[] args) {
-        System.out.println(new Problem019().run());
+        System.out.println(new Problem019().call());
     }
 
     @Override
-    public String run() {
+    public String call() {
         int result = countingSundays(1, 1, 1900);
+        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
         return Integer.toString(result);
     }
 
