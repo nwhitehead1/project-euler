@@ -37,7 +37,7 @@ public class Problem011 implements ProjectEulerCallable {
         int maxDiagLR = maxDiagLR(grid);
         int maxDiagRL = maxDiagRL(grid);
         int max = Math.max(maxRight, Math.max(maxDown, Math.max(maxDiagRL, maxDiagLR)));
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(max);
     }
 

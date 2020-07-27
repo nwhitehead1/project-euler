@@ -14,7 +14,7 @@ public class Problem009 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = specialPythagoreanTriplet();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

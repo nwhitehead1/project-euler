@@ -12,7 +12,7 @@ public class Problem012 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = highlyDevisibleTriangularNumber();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

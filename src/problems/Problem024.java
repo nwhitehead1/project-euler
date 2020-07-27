@@ -18,7 +18,7 @@ public class Problem024 implements ProjectEulerCallable {
     @Override
     public String call() {
         String result = lexicographicPermutations(IntStream.rangeClosed(0, 9).boxed().collect(Collectors.toList()));
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return result;
     }
 

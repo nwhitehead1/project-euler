@@ -20,7 +20,7 @@ public class ProblemTest {
 
     @Before
     public void setUp() {
-        executorService = Executors.newWorkStealingPool();
+        executorService = Executors.newFixedThreadPool(5);
         callableMap = populateTestCases();
     }
 
@@ -100,6 +100,7 @@ public class ProblemTest {
         callableMap.put(new Problem043(), "16695334890");
         callableMap.put(new Problem044(), "5482660");
         callableMap.put(new Problem045(), "1533776805");
+        callableMap.put(new Problem046(), "5777");
         return callableMap;
     }
 }

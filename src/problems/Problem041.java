@@ -19,7 +19,7 @@ public class Problem041 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = largestPandigitalPrimeFaster();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

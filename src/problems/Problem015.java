@@ -13,7 +13,7 @@ public class Problem015 implements ProjectEulerCallable {
     @Override
     public String call() {
         BigInteger result = latticePaths();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return result.toString();
     }
 
@@ -22,8 +22,8 @@ public class Problem015 implements ProjectEulerCallable {
             Number of lattice paths from (0,0) to (n,k) is (n+k)C(n), in this instance n=k=20
             Therefore, (40)C(20) = 40! / (20! x (40-20)!)
      */
-    private BigInteger latticePaths()  {
-        BigInteger numerator = factorial(2* 20);
+    private BigInteger latticePaths() {
+        BigInteger numerator = factorial(2 * 20);
         BigInteger denominator = factorial(20).multiply(factorial(20));
         return numerator.divide(denominator);
     }

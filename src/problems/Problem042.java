@@ -14,7 +14,7 @@ public class Problem042 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = countTriangleWords(new FileHelper().readFile(FILE_PATH));
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

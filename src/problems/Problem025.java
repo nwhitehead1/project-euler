@@ -12,7 +12,7 @@ public class Problem025 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = nthDigitFibonacci("1", "1", 1000, new AdditionHelper());
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

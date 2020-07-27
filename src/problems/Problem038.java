@@ -12,7 +12,7 @@ public class Problem038 implements ProjectEulerCallable {
     @Override
     public String call() {
         String result = largestPandigitalMultiple();
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return result;
     }
 

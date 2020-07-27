@@ -12,7 +12,7 @@ public class Problem006 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = squareOfSum() - Library.sumOfSquares(100);
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

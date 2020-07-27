@@ -12,7 +12,7 @@ public class Problem016 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = powerDigitSum("2", 1000, new AdditionHelper());
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 

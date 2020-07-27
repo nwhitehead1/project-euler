@@ -11,7 +11,7 @@ public class Problem002 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = fibonacciToLimit(1, 2, 4000000);
-        System.out.println("Executing " + this.getClass().getSimpleName() + " -> Thread: " + Thread.currentThread().getName());
+        printCallableThread();
         return Integer.toString(result);
     }
 
