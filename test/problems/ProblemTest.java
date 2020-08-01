@@ -101,6 +101,7 @@ public class ProblemTest {
         callableMap.put(new Problem044(), "5482660");
         callableMap.put(new Problem045(), "1533776805");
         callableMap.put(new Problem046(), "5777");
+        callableMap.put(new Problem047(), "134043");
         return callableMap;
     }
 }
