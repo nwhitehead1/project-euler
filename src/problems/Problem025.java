@@ -1,6 +1,6 @@
 package problems;
 
-import lib.helpers.AdditionHelper;
+import lib.arithmetic.Adder;
 import runner.ProjectEulerCallable;
 
 public class Problem025 implements ProjectEulerCallable {
@@ -11,17 +11,17 @@ public class Problem025 implements ProjectEulerCallable {
 
     @Override
     public String call() {
-        int result = nthDigitFibonacci("1", "1", 1000, new AdditionHelper());
+        int result = nthDigitFibonacci("1", "1", 1000, new Adder());
         printCallableThread();
         return Integer.toString(result);
     }
 
-    private int nthDigitFibonacci(String first, String second, int limit, AdditionHelper helper) {
+    private int nthDigitFibonacci(String first, String second, int limit, Adder adder) {
         if (first.length() == limit) {
             return 1;
         }
-        helper.setFirst(first);
-        helper.setSecond(second);
-        return 1 + nthDigitFibonacci(second, helper.addTwoNumbers(), limit, helper);
+        adder.setFirst(first);
+        adder.setSecond(second);
+        return 1 + nthDigitFibonacci(second, adder.addTwoNumbers(), limit, adder);
     }
 }

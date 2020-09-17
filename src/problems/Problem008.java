@@ -14,15 +14,15 @@ public class Problem008 implements ProjectEulerCallable {
 
     @Override
     public String call() {
-        BigInteger result = length13Substrings(NUMBER);
+        BigInteger result = length13Substrings();
         printCallableThread();
         return result.toString();
     }
 
-    private BigInteger length13Substrings(String value) {
+    private BigInteger length13Substrings() {
         BigInteger maxValue = BigInteger.ONE;
         BigInteger tempValue = BigInteger.ONE;
-        char[] charArr = value.toCharArray();
+        char[] charArr = Problem008.NUMBER.toCharArray();
         int index = 0;
         while (index < charArr.length - 13) {
             for (int j = index; j < index + 13; j++) {

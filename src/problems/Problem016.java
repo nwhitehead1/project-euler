@@ -1,6 +1,6 @@
 package problems;
 
-import lib.helpers.AdditionHelper;
+import lib.arithmetic.Adder;
 import runner.ProjectEulerCallable;
 
 public class Problem016 implements ProjectEulerCallable {
@@ -11,7 +11,7 @@ public class Problem016 implements ProjectEulerCallable {
 
     @Override
     public String call() {
-        int result = powerDigitSum("2", 1000, new AdditionHelper());
+        int result = powerDigitSum("2", 1000, new Adder());
         printCallableThread();
         return Integer.toString(result);
     }
@@ -27,12 +27,12 @@ public class Problem016 implements ProjectEulerCallable {
             Add the previous result to itself (equivalent to multiplying by 2), decrement iteration
 
      */
-    private int powerDigitSum(String sum, int iteration, AdditionHelper helper) {
+    private int powerDigitSum(String sum, int iteration, Adder adder) {
         if (iteration < 2) {
             return sum.chars().map(Character::getNumericValue).sum();
         }
-        helper.setFirst(sum);
-        helper.setSecond(sum);
-        return powerDigitSum(helper.addTwoNumbers(), iteration - 1, helper);
+        adder.setFirst(sum);
+        adder.setSecond(sum);
+        return powerDigitSum(adder.addTwoNumbers(), iteration - 1, adder);
     }
 }

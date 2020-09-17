@@ -1,4 +1,4 @@
-package lib.helpers;
+package lib.arithmetic;
 
 import lib.Library;
 
@@ -8,33 +8,37 @@ import java.util.regex.Pattern;
 /**
  * Class for addition, and subtraction of very large numbers
  */
-public class AdditionHelper {
+public class Adder extends Arithmetic {
 
-    private String first;
-    private String second;
-
-    public AdditionHelper(String first, String second) {
-        this.first = first;
-        this.second = second;
+    public Adder() {
+        super();
     }
 
-    public AdditionHelper() {
+    public Adder(String first, String second) {
+        super(first, second);
+    }
+
+    @Override
+    public String operation(String a, String b) {
+        return add(a, b);
     }
 
     /**
-     * This is a monstrosity of ugliness. I will come back and clean this up later
+     * Comprehensive addition and subtraction of large numbers as String objects.
      *
-     * @return sum of the first and second values in the object
+     * @param a first
+     * @param b second
+     * @return Sum of the first and second string values.
      */
-    public String addTwoNumbers() {
+    public String add(String a, String b) {
         boolean firstNeg = false;
         boolean secondNeg = false;
         // Check for 0 is done when signs are XOR
         boolean firstLargerFlag = false;
         boolean resultSignNegative = false;
 
-        String firstValue = this.first;
-        String secondValue = this.second;
+        String firstValue = a;
+        String secondValue = b;
         int sum, next, carry = 0;
         String revSum, revNext;
         StringBuilder sumBuilder = new StringBuilder();
@@ -49,11 +53,11 @@ public class AdditionHelper {
         }
 
         // Flags for negative numbers
-        if (first.charAt(0) == '-') {
+        if (a.charAt(0) == '-') {
             firstNeg = true;
             firstValue = firstValue.substring(1);
         }
-        if (second.charAt(0) == '-') {
+        if (b.charAt(0) == '-') {
             secondNeg = true;
             secondValue = secondValue.substring(1);
         }
@@ -129,16 +133,11 @@ public class AdditionHelper {
         return (resultSignNegative) ? "-" + result : result;
     }
 
-    public void setFirst(String first) {
-        this.first = first;
-    }
-
-    public void setSecond(String second) {
-        this.second = second;
+    public String addTwoNumbers() {
+        return add(super.first, super.second);
     }
 
     private String padSmallerValue(String larger, String smaller) {
-        return "0".repeat(Math.max(0, larger.length() - smaller.length())) +
-                smaller;
+        return "0".repeat(Math.max(0, larger.length() - smaller.length())) + smaller;
     }
 }

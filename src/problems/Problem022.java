@@ -1,6 +1,6 @@
 package problems;
 
-import lib.helpers.AdditionHelper;
+import lib.arithmetic.Adder;
 import lib.helpers.FileHelper;
 import runner.ProjectEulerCallable;
 
@@ -31,11 +31,11 @@ public class Problem022 implements ProjectEulerCallable {
         List<String> cleanFileArray = Arrays.asList(fileString.replace("\"", "").split(","));
         Collections.sort(cleanFileArray);
 
-        AdditionHelper addition = new AdditionHelper();
+        Adder adder = new Adder();
         for (int i = 0; i < cleanFileArray.size(); i++) {
-            addition.setFirst(nameScoreTotal);
-            addition.setSecond(String.valueOf(getAlphabeticalValue(cleanFileArray.get(i), i + 1)));
-            nameScoreTotal = addition.addTwoNumbers();
+            adder.setFirst(nameScoreTotal);
+            adder.setSecond(String.valueOf(getAlphabeticalValue(cleanFileArray.get(i), i + 1)));
+            nameScoreTotal = adder.addTwoNumbers();
         }
         return nameScoreTotal;
     }

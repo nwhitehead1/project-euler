@@ -1,7 +1,7 @@
 package problems;
 
 import lib.Library;
-import lib.helpers.AdditionHelper;
+import lib.arithmetic.Adder;
 import runner.ProjectEulerCallable;
 
 import java.util.*;
@@ -65,7 +65,7 @@ public class Problem043 implements ProjectEulerCallable {
         }
 
         return candidateCheck.stream()
-                .reduce("0", (a, b) -> new AdditionHelper(a, b).addTwoNumbers());
+                .reduce("0", (a, b) -> new Adder(a, b).addTwoNumbers());
     }
 
     /*

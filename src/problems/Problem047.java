@@ -18,6 +18,7 @@ public class Problem047 implements ProjectEulerCallable {
     @Override
     public String call() {
         int result = distinctPrimeFactors();
+        printCallableThread();
         return Integer.toString(result);
     }
 
@@ -30,7 +31,6 @@ public class Problem047 implements ProjectEulerCallable {
                 Cheap way to speed up - use static list of primes under sqrt(150000)
                 Can't think of a nicer way to do this beyond brute force at them moment - return to it later!
      */
-
     private static final int LIMIT = (int) Math.sqrt(150000);
     private static final List<Integer> PRIMES_LIST_OVER_TWO = IntStream.iterate(3, i -> i + 2)
             .boxed()

@@ -1,6 +1,6 @@
 package problems;
 
-import lib.helpers.AdditionHelper;
+import lib.arithmetic.Adder;
 import runner.ProjectEulerCallable;
 
 public class Problem020 implements ProjectEulerCallable {
@@ -11,7 +11,7 @@ public class Problem020 implements ProjectEulerCallable {
 
     @Override
     public String call() {
-        int result = factorialDigitSum("100", 99, new AdditionHelper());
+        int result = factorialDigitSum("100", 99, new Adder());
         printCallableThread();
         return Integer.toString(result);
     }
@@ -22,7 +22,7 @@ public class Problem020 implements ProjectEulerCallable {
             10+10+...+10 -> 9 times -> take result
             result+result+...+result -> 8 times
      */
-    private int factorialDigitSum(String n, int iteration, AdditionHelper helper) {
+    private int factorialDigitSum(String n, int iteration, Adder helper) {
         if (iteration == 1) {
             return n.chars().map(Character::getNumericValue).sum();
         }

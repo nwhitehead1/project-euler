@@ -1,6 +1,6 @@
 package problems;
 
-import lib.helpers.AdditionHelper;
+import lib.arithmetic.Adder;
 import runner.ProjectEulerCallable;
 
 public class Problem013 implements ProjectEulerCallable {
@@ -120,7 +120,7 @@ public class Problem013 implements ProjectEulerCallable {
     private String getSums() {
         String[] listOfNumbers = NUMBER.split("\r\n");
         String currentSum = listOfNumbers[0];
-        AdditionHelper addition = new AdditionHelper();
+        Adder addition = new Adder();
         for (int i = 1; i < listOfNumbers.length; i++) {
             addition.setFirst(currentSum);
             addition.setSecond(listOfNumbers[i]);

@@ -1,7 +1,7 @@
 package problems;
 
 import lib.Library;
-import lib.helpers.AdditionHelper;
+import lib.arithmetic.Adder;
 import runner.ProjectEulerCallable;
 
 import java.util.List;
@@ -22,15 +22,15 @@ public class Problem010 implements ProjectEulerCallable {
     }
 
     private String summationOfPrimes() {
-        AdditionHelper helper = new AdditionHelper();
+        Adder adder = new Adder();
         String sum = "";
         List<Integer> primes = IntStream.rangeClosed(2, 2000000).boxed().parallel()
                 .filter(Library::isPrime).collect(Collectors.toList());
-        helper.setFirst(Integer.toString(primes.get(0)));
+        adder.setFirst(Integer.toString(primes.get(0)));
         for (int i = 1; i < primes.size(); i++) {
-            helper.setSecond(Integer.toString(primes.get(i)));
-            sum = helper.addTwoNumbers();
-            helper.setFirst(sum);
+            adder.setSecond(Integer.toString(primes.get(i)));
+            sum = adder.addTwoNumbers();
+            adder.setFirst(sum);
         }
         return sum;
     }
